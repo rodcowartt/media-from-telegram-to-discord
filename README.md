@@ -1,4 +1,4 @@
-# media-from-telegram-to-discord-bot
+# Media-from-telegram-to-discord-bot
 Works only on python3
 1. Create app here: https://my.telegram.org/apps
 2. Rememer the App api_id and App api_hash
