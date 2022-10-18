@@ -1,8 +1,10 @@
 # Media-from-telegram-to-discord-bot
 Works only on python3
 1) Create app here: https://my.telegram.org/apps
-2) Rememer the App api_id and App api_hash 
+2) Rememer the App api_id and App api_hash
+
 ![image](https://user-images.githubusercontent.com/76446256/196541049-2e717776-e4d2-46fe-9203-4ae3bbbdf3e4.png)
+
 3) Create a discord bot 
 4) Enable intents ![image](https://user-images.githubusercontent.com/76446256/196537737-7da0ec5d-d6b9-4638-8c33-d21c253da82d.png)
 5) Give bot priveleges ![image](https://user-images.githubusercontent.com/76446256/196538085-350f5e93-18e8-494c-ae61-596fb826bf5c.png) 
