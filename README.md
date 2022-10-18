@@ -5,7 +5,7 @@ Works only on python3
 
 ![image](https://user-images.githubusercontent.com/76446256/196541049-2e717776-e4d2-46fe-9203-4ae3bbbdf3e4.png)
 
-3) Create a discord bot 
+3) Create a discord bot (remember bot token)
 4) Enable intents ![image](https://user-images.githubusercontent.com/76446256/196537737-7da0ec5d-d6b9-4638-8c33-d21c253da82d.png)
 5) Give bot priveleges ![image](https://user-images.githubusercontent.com/76446256/196538085-350f5e93-18e8-494c-ae61-596fb826bf5c.png) 
 ![image](https://user-images.githubusercontent.com/76446256/196538248-5c2cb81c-8b7a-496c-abcd-475d59304e0b.png)
