@@ -11,6 +11,8 @@ Works only on python3
 ![image](https://user-images.githubusercontent.com/76446256/196538248-5c2cb81c-8b7a-496c-abcd-475d59304e0b.png)
 6) Open this new link in browser and add this discord bot to your discord channel
 7) In main.py script:
+
 7.1) Replace api_id, api_hash, discord channel id and dicord bot token
+
 7.2) Insert needed telegram usernames 
 8) Start the main.py script and follow the instructions
