@@ -1,0 +1,8 @@
+telethon
+discord
+os
+glob
+nest_asyncio
+pyaes
+pyasn1
+rsa
