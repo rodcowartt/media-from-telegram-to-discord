@@ -9,8 +9,12 @@ api_hash = 'hash'
 name='Your Name'
 TgClient = TelegramClient(name,api_id, api_hash)
 
+for file in glob.glob("./media/*"): #on start of the script this will delete old files from folder
+    os.remove(file)
+    print("Deleted " + str(file))
 
-@TgClient.on(events.NewMessage(FromUsers={'username1','username2'}))#creates an event that catches new messages from telegram (for choosed usernames)
+
+@TgClient.on(events.NewMessage(from_users={'username1','username2'}))#creates an event that catches new messages from telegram (for choosed usernames)
 async def handler(event):
     if event:
         FileName=str(event.message.file.name) #full name of the downloaded file
