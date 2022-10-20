@@ -39,10 +39,7 @@ async def handler(event):
                 print('We have logged in as {0.user}'.format(DsClient))
                 channel = DsClient.get_channel(1031981900425867354) #channel id from discord
                 FileNameDefault = 'None'
-                if (FileName == FileNameDefault):#sends file into channel
-                    await channel.send(file=discord.File(FilePath))
-                else:
-                    await channel.send(file=discord.File(FilePath))
+                await channel.send(file=discord.File(FilePath))#sends file into channel
                 await DsClient.close()
                 # Loop Through the folder projects all files and deleting them one by one
                 for file in glob.glob("./media/*"):#delete old files from folder
