@@ -6,3 +6,4 @@ nest_asyncio
 pyaes
 pyasn1
 rsa
+pathlib
