@@ -2,6 +2,8 @@ from telethon import TelegramClient, sync, events
 import discord
 import os, glob
 import nest_asyncio
+import pathlib
+
 nest_asyncio.apply()
 
 api_id = 11111111 #https://my.telegram.org/apps
@@ -22,6 +24,10 @@ async def handler(event):
         await TgClient.download_media(event.message, FilePath) #downloading file
         print(' Name: ' + FileName) #None.jpg if file is image and full name if video, but if message is forwarded then None.jpg or None.mp4
         
+        currentDirectory = pathlib.Path('./media/') 
+        for currentFile in currentDirectory.iterdir():
+            FilePath=currentFile #full path with extension
+
         if (os.path.getsize(FilePath) < 8000000):#Size of file verification (discord allows upload files 8 mb or least)
             intents = discord.Intents.default()
             intents.message_content = True
@@ -34,14 +40,14 @@ async def handler(event):
                 channel = DsClient.get_channel(1031981900425867354) #channel id from discord
                 FileNameDefault = 'None'
                 if (FileName == FileNameDefault):#sends file into channel
-                    await channel.send(file=discord.File('./media/' + FileNameDefault + '.jpg'))
-                    await channel.send(file=discord.File('./media/' + FileNameDefault + '.mp4'))
+                    await channel.send(file=discord.File(FilePath))
                 else:
-                    await channel.send(file=discord.File('./media/' + FileName))
+                    await channel.send(file=discord.File(FilePath))
                 await DsClient.close()
                 # Loop Through the folder projects all files and deleting them one by one
                 for file in glob.glob("./media/*"):#delete old files from folder
                     os.remove(file)
+                    print("Deleted " + str(file))
 
             DsClient.run('Your`s discord bot TOKEN')
         else:
