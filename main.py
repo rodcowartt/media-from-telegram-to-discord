@@ -23,35 +23,34 @@ async def handler(event):
         FilePath='./media/'+FileName #path to the downloaded file
         await TgClient.download_media(event.message, FilePath) #downloading file
         print(' Name: ' + FileName) #None.jpg if file is image and full name if video, but if message is forwarded then None.jpg or None.mp4
-        
-        currentDirectory = pathlib.Path('./media/') 
-        for currentFile in currentDirectory.iterdir():
-            FilePath=currentFile #full path with extension
+        FindАdvertising = event.message.message.find("http") #searching "http" in message with attached file
+        if FindАdvertising!=-1:
+            print("It`s an Advertisement, not gonna post it")
+        else:
+            print("There is no Advertisement")
 
-        if (os.path.getsize(FilePath) < 8000000):#Size of file verification (discord allows upload files 8 mb or least)
-            intents = discord.Intents.default()
-            intents.message_content = True
-
+            currentDirectory = pathlib.Path('./media/') 
             DsClient = discord.Client(intents=intents)
 
             @DsClient.event
-            async def on_ready():
+            async def on_ready(): #event starts when discord bot is logged in
                 print('We have logged in as {0.user}'.format(DsClient))
                 channel = DsClient.get_channel(1031981900425867354) #channel id from discord
-                FileNameDefault = 'None'
-                await channel.send(file=discord.File(FilePath))#sends file into channel
-                await DsClient.close()
+                for currentFile in currentDirectory.iterdir(): #for each file in media folder 
+                    FilePath = currentFile
+                    if (os.path.getsize(FilePath) < 8000000):  #sends file into channel or deletes it if it`s too large
+                        await channel.send(file=discord.File(FilePath))# sends file into channel
+                    else:
+                        print("File is too LARGE")
+                        os.remove(FilePath) #deleting file
+                await DsClient.close() #disconnetcing bot
+                DsClient.clear()
                 # Loop Through the folder projects all files and deleting them one by one
                 for file in glob.glob("./media/*"):#delete old files from folder
                     os.remove(file)
                     print("Deleted " + str(file))
 
-            DsClient.run('Your`s discord bot TOKEN')
-        else:
-            print("File is too LARGE")
-            for file in glob.glob("./media/*"): #deleting the big file, that bot can`t upload
-                os.remove(file)
-                print("Deleted " + str(file))
+            await DsClient.start('Your`s discord bot TOKEN')
 
 TgClient.start()
 TgClient.run_until_disconnected()
